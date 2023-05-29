@@ -1,21 +1,23 @@
-# Bibliotecas
-from shiny import App, render, ui, run_app
+from shiny import ui, App
 
-
-# Interface do Usuário
+# Interface do usuário (UI)
 app_ui = ui.page_navbar(
-    title = "Título da Dashboard",
+    ui.nav_control(ui.a("Análise Macro", href = "https://analisemacro.com.br/")),
+    ui.nav_menu(
+        "Mais",
+        ui.nav_control(
+            ui.a("LinkedIn", href = "https://br.linkedin.com/company/an%C3%A1lise-macro"),
+            ui.a("Blog", href = "https://analisemacro.com.br/blog/")
+            )
+        ),
+    title = "Título da dashboard",
     bg = "blue",
-    lang = "pt"
+    inverse = True
 )
 
-
-# Servidor
-def server(input, output, session):
+# Servidor (backend)
+def server (input, output, session):
     ...
 
-
-# Combinar objetos e rodar Shiny App
+# Construir Shiny App
 app = App(app_ui, server)
-
-run_app(launch_browser = True)
