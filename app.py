@@ -1,53 +1,47 @@
 from shiny import ui, App
 
-# Interface do usuário (UI)
+# INTERFACE DO USUÁRIO
 app_ui = ui.page_navbar(
-    # Cria uma "página interna" na dashboard
     ui.nav(
-        # Título da página
         "Página 1",
         ui.layout_sidebar(
-            ui.panel_sidebar("Contúdo da barra lateral"),
+            ui.panel_sidebar("Barra lateral"),
             ui.panel_main(
+                "Painel principal",
                 ui.row(
-                    ui.column(6, "Bloco A", {"style": "background-color: yellow;"}),
-                    ui.column(6, "Bloco B", {"style": "background-color: red;"})
-                ),
+                    ui.column(6, "Linha 1, Coluna A", style = "background-color: red;"),
+                    ui.column(6, "Linha 1, Coluna B", style = "background-color: yellow;")
+                    ),
                 ui.row(
-                    ui.column(4, "Bloco C", {"style": "background-color: blue;"}),
-                    ui.column(4, "Bloco D", {"style": "background-color: orange;"}),
-                    ui.column(4, "Bloco E", {"style": "background-color: purple;"})
+                    ui.column(4, "Linha 2, Coluna C", style = "background-color: green;"),
+                    ui.column(4, "Linha 2, Coluna D", style = "background-color: purple;"),
+                    ui.column(4, "Linha 2, Coluna E", style = "background-color: pink;")
+                    )
                 )
-            )
         )
-    ),
-    ui.nav(
-        # Título da página
-        "Página 2"
-    ),
-    #ui.nav_spacer(),
-    # Links barra de navegação
+        ),
+    ui.nav("Página 2"),
     ui.nav_control(ui.a("Análise Macro", href = "https://analisemacro.com.br/")),
+    ui.nav_spacer(),
     ui.nav_menu(
         "Mais",
-        ui.nav_control(
-            ui.a("LinkedIn", href = "https://br.linkedin.com/company/an%C3%A1lise-macro"),
-            ui.a("Blog", href = "https://analisemacro.com.br/blog/")
-        ),
-        align="left"
+        ui.nav_control(ui.a("Blog", href = "https://analisemacro.com.br/blog/")),
+        ui.nav_control(ui.a("LinkedIn", href = "https://br.linkedin.com/company/an%C3%A1lise-macro")),
+        align = "right"
     ),
-    # Título e estilos barra de navegação
     title = ui.row(
         ui.column(3, ui.img(src = "https://aluno.analisemacro.com.br/download/49491/?tmstv=1685386850")),
         ui.column(9, "Título da dashboard")
-        ),
+    ),
     bg = "blue",
     inverse = True
 )
 
-# Servidor (backend)
-def server (input, output, session):
+
+# SERVIDOR
+def server(input, output, session):
     ...
 
-# Construir Shiny App
+
+# SHINY APP
 app = App(app_ui, server)
