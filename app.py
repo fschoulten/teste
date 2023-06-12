@@ -37,9 +37,9 @@ app_ui = ui.page_navbar(
         align="left"
     ),
     # Título e estilos barra de navegação
-    title = ui.div(
-        ui.img(src = "https://aluno.analisemacro.com.br/download/49491/?tmstv=1685386850"),
-        " Título da dashboard"
+    title = ui.row(
+        ui.column(3, ui.img(src = "https://aluno.analisemacro.com.br/download/49491/?tmstv=1685386850")),
+        ui.column(9, "Título da dashboard")
         ),
     bg = "blue",
     inverse = True
